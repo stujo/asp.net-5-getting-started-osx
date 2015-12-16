@@ -101,6 +101,62 @@ Run the generator
 #Start Visual Studio Code
 So say the instructions: 'Start Visual Studio Code' but no idea how to do that :(
 
+Googled and found : [https://www.visualstudio.com/en-us/products/code-vs.aspx](https://www.visualstudio.com/en-us/products/code-vs.aspx) Giving it a try... [https://code.visualstudio.com/Docs/?dv=osx](https://code.visualstudio.com/Docs/?dv=osx) Downloaded, unzipped and moved to Applications.... That works but I couldn't get the dnx restore packages to run 'OmniSharp server is not running.' was the error.
+
+#Giving up on that: Back to the command line
+The yo generator printed this out:
+```
+Your project is now created, you can use the following commands to get going
+    cd "Magic8Ball"
+    dnu restore
+    dnu build (optional, build will also happen when it's run)
+    dnx web
+```
+
+```
+[stuart:/work/asp.net/projects/Magic8Ball]$ dnu restore
+/usr/local/lib/dnx/runtimes/dnx-mono.1.0.0-rc1-update1/bin/dnx: line 14: exec: mono: not found
+```
+#Installing Mono
+* Found: [http://www.mono-project.com/docs/about-mono/supported-platforms/osx/](http://www.mono-project.com/docs/about-mono/supported-platforms/osx/)
+
+* Trying Mono Mac Pkg....
+
+Seemed to work even though the install hangs for a while...
+```
+[stuart:/work/asp.net/projects/Magic8Ball]$ which mono
+```
+
+```
+[stuart:/work/asp.net/projects/Magic8Ball]$ dnu restore
+...Lots of downloads...
+```
+Looks good!
+
+```
+[stuart:/work/asp.net/projects/Magic8Ball]$ dnx web
+info: Microsoft.Data.Entity.Storage.Internal.RelationalCommandBuilderFactory[1]
+      Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      PRAGMA foreign_keys=ON;
+info: Microsoft.Data.Entity.Storage.Internal.RelationalCommandBuilderFactory[1]
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+info: Microsoft.Extensions.DependencyInjection.DataProtectionServices[0]
+      User profile is available. Using '/Users/stuart/.local/share/ASP.NET/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+Hosting environment: Production
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+info: Microsoft.AspNet.Hosting.Internal.HostingEngine[1]
+      Request starting HTTP/1.1 GET http://localhost:5000/  
+info: Microsoft.AspNet.Mvc.Controllers.ControllerActionInvoker[1]
+
+```
+WOOT!
+
+Browser [http://localhost:5000/](http://localhost:5000/)
+
+
+
 
 
 
