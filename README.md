@@ -14,7 +14,7 @@ I really can't find the files that this pkg installed :(
 
 Tada!
 ```
-[stu:~]$ dnvm
+[stuart:~]$ dnvm
     ___  _  ___   ____  ___
    / _ \/ |/ / | / /  |/  /
   / // /    /| |/ / /|_/ / 
@@ -36,4 +36,73 @@ Use dnvm [help|-h|-help|--help]  to display help text.
 
 ```
 
+Trying it out
+```
+[stuart:~]$ dnvm list
 
+Active Version              Runtime Architecture OperatingSystem Alias
+------ -------              ------- ------------ --------------- -----
+  *    1.0.0-rc1-update1    coreclr x64          darwin          default
+       1.0.0-rc1-update1    mono                 linux/osx       
+```
+Maybe these got installed by the package I downloaded at the start or maybe they came with the curl, not sure
+
+```
+[stuart:~]$ dnvm upgrade -r coreclr
+Determining latest version
+Latest version is 1.0.0-rc1-update1 
+dnx-coreclr-darwin-x64.1.0.0-rc1-update1 already installed in /usr/local/lib/dnx
+Adding /usr/local/lib/dnx/runtimes/dnx-coreclr-darwin-x64.1.0.0-rc1-update1/bin to process PATH
+Updating alias 'default' to 'dnx-coreclr-darwin-x64.1.0.0-rc1-update1'
+```
+
+```
+[stuart:~]$ dnvm upgrade -r mono
+It appears you don't have Mono available. Remember to get Mono before trying to run  application. 
+Determining latest version
+Latest version is 1.0.0-rc1-update1 
+dnx-mono.1.0.0-rc1-update1 already installed in /usr/local/lib/dnx
+Adding /usr/local/lib/dnx/runtimes/dnx-mono.1.0.0-rc1-update1/bin to process PATH
+Updating alias 'default' to 'dnx-mono.1.0.0-rc1-update1'
+```
+
+Weird messaging but it looks like I now have ``mono`` whatever that is :)
+
+#On to My First Application...
+
+* [https://docs.asp.net/en/latest/tutorials/your-first-mac-aspnet.html](https://docs.asp.net/en/latest/tutorials/your-first-mac-aspnet.html)
+* Straight to [https://docs.asp.net/en/latest/client-side/yeoman.html](https://docs.asp.net/en/latest/client-side/yeoman.html)
+
+#Yeoman Setup
+Install / Update npm / yo / bower
+```shell
+[stuart:~]$ npm install -g yo bower grunt-cli gulp
+....wait and ok!
+```
+
+Install generator-aspnet
+```
+[stuart:~]$ npm install -g generator-aspnet
+```
+
+Make a working directory 'MyYo'
+```
+[stuart:~]$ mkdir -p /work/asp.net/projects/Magic8Ball
+[stuart:~]$ cd /work/asp.net/projects/Magic8Ball
+```
+
+Run the generator 
+```
+[stuart:/work/asp.net/projects/Magic8Ball]$ yo aspnet
+```
+* Select 'Web Application'
+* Name: 'Magic8Ball'
+
+#Start Visual Studio Code
+So say the instructions: 'Start Visual Studio Code' but no idea how to do that :(
+
+
+
+
+
+ 
